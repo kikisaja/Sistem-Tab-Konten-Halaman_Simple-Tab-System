@@ -1,1 +1,137 @@
 
+:root {
+    --bg-light: #f1f5f9;
+    --panel-bg: #ffffff;
+    --text-dark: #1e293b;
+    --stroke-dark: #1e293b;
+    --pop-yellow: #ffb703;
+    --pop-blue: #00f0ff;
+    --pop-pink: #ff477e;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Roboto, sans-serif;
+}
+
+body {
+    background-color: var(--bg-light);
+    color: var(--text-dark);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.tab-container {
+    background-color: var(--panel-bg);
+    padding: 30px 20px;
+    border-radius: 24px;
+    border: 3px solid var(--stroke-dark);
+    box-shadow: 6px 6px 0px var(--stroke-dark);
+    max-width: 520px;
+    width: 100%;
+}
+
+.tab-header {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.tab-header h1 {
+    font-size: 1.8rem;
+    font-weight: 900;
+}
+
+.tab-header p {
+    font-size: 0.85rem;
+    color: #64748b;
+    margin-top: 4px;
+    line-height: 1.4;
+}
+
+/* --- BARIS HEADER MENU NAVIGASI TAB --- */
+.tab-navigation {
+    display: flex;
+    border-bottom: 3px solid var(--stroke-dark);
+    margin-bottom: 20px;
+    gap: 6px;
+}
+
+.btn-tab {
+    background-color: #f1f5f9;
+    color: var(--text-dark);
+    border: 2px solid var(--stroke-dark);
+    border-bottom: none; /* Menghilangkan border bawah agar menyatu dengan garis navigasi */
+    padding: 10px 16px;
+    font-size: 0.9rem;
+    font-weight: 800;
+    cursor: pointer;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    transition: all 0.1s ease;
+    transform: translateY(2px); /* Menurunkan sedikit agar menutup garis border utama */
+}
+
+.btn-tab:hover {
+    background-color: #e2e8f0;
+    transform: translateY(0px);
+}
+
+/* Status Tombol Tab Aktif Terpilih */
+.btn-tab.active {
+    background-color: var(--pop-blue);
+    transform: translateY(-2px); /* Efek terangkat sedikit ke atas */
+    padding-bottom: 12px;
+}
+
+/* Mengubah warna latar belakang tab aktif secara bervariasi menggunakan urutan posisi CSS */
+.btn-tab.active[data-target="konten-css"] { background-color: var(--pop-pink); color: white; }
+.btn-tab.active[data-target="konten-js"] { background-color: var(--pop-yellow); }
+
+/* --- PANEL BOKS KONTEN MATERI --- */
+.tab-content-wrapper {
+    background-color: #ffffff;
+}
+
+/* Sembunyikan semua panel konten secara default */
+.tab-panel {
+    display: none;
+    animation: fadeInTab 0.3s ease-out forwards;
+}
+
+/* Munculkan panel konten hanya jika memiliki class active */
+.tab-panel.active {
+    display: block;
+}
+
+.tab-panel h3 {
+    font-size: 1.2rem;
+    font-weight: 800;
+    margin-bottom: 10px;
+}
+
+.tab-panel p {
+    font-size: 0.9rem;
+    color: #475569;
+    line-height: 1.5;
+    font-weight: 600;
+}
+
+.note-box {
+    margin-top: 15px;
+    background-color: #f8fafc;
+    border-left: 4px solid var(--stroke-dark);
+    padding: 10px 12px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    border-radius: 4px;
+}
+
+@keyframes fadeInTab {
+    0% { opacity: 0; transform: translateY(4px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
